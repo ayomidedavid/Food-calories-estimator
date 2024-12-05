@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Calorie Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+               label, select, input {
+            margin-bottom: 15px;
+            
+    padding: 8px;
+    width: 100%;
+    max-width: 97%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Food Calories</h1>
+        <form action="/predict" method="post">
+            <label for="FoodCategory">Food Category:</label>
+            <select name="FoodCategory" id="FoodCategory" required>
+                {% for category in food_categories %}
+                <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="FoodItem">Food Item:</label>
+            <select name="FoodItem" id="FoodItem" required>
+                {% for item in food_items %}
+                <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
